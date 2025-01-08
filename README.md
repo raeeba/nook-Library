@@ -7,22 +7,22 @@ The website contains five (5) pages: a Home page, a Profile page and a Contact U
 
 ## Pages
 The Home page contains:
-  •	A display of the books the website stocks (a quote from the book, a summary, and the cover).
-  •	A description of how the website works.
+  - A display of the books the website stocks (a quote from the book, a summary, and the cover).
+  -	A description of how the website works.
 
 The Profile page contains:
-  •	The books the user has decided to purchase.
-  •	A form for the user to select which other books they would like to purchase. 
+  -	The books the user has decided to purchase.
+  -	A form for the user to select which other books they would like to purchase. 
 
 The Contact page contains: 
-  •	A form the user can fill out to provide comments, feedback, and ask questions.
+  -	A form the user can fill out to provide comments, feedback, and ask questions.
 
 The About Us page contains:
-  •	A description of the website’s mission and a video.
+  -	A description of the website’s mission and a video.
 
 Each page contains:
-  •	A navigation menu.
-  •	The website’s name and logo.
+  -	A navigation menu.
+  -	The website’s name and logo.
 
 ## Setup 
 You must run the website using Visual Studio Code on Chrome. 
