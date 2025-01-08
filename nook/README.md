@@ -1,5 +1,5 @@
 ## Copyright
-The nook. eLibrary  website by Raeeba is licensed under CC BY-NC-SA 4.0.
+The nook. eLibrary  website is licensed under CC BY-NC-SA 4.0.
 
 ## Project Description
 This website is a virtual bookstore which holds e-books called “nook.”. The site stocks primarily fiction books from different genres. The user is able to purchase e-books from the site.
@@ -29,9 +29,6 @@ You must run the website using Visual Studio Code on Chrome.
 
 ## Credit
 Video was taken from: Newbie Learns Video Creation. https://www.youtube.com/embed/ZNSA0NrDeb4?si=cec0nS7bqXp2okzq
-
 Images were taken from: Canva 
-
 Icon was created by me 
-
 Wireframes were created using Lucidchart.
