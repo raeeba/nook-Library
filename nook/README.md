@@ -26,6 +26,9 @@ You must run the website using Visual Studio Code on Chrome.
 
 ## Credit
 Video was taken from: Newbie Learns Video Creation. https://www.youtube.com/embed/ZNSA0NrDeb4?si=cec0nS7bqXp2okzq
+
 Images were taken from: Canva 
+
 Icon was created by me 
+
 Wireframes were created using Lucidchart.
