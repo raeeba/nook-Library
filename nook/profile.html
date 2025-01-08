@@ -1,0 +1,179 @@
+<!-------------------------------------------------------
+Final Project
+Written by: Raeeba 
+For “Internet Programming” Section 00002– Winter 2024
+-------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nook. | my nook.</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="whitestarico.PNG" type="image/x-icon"> <!-- add icon  -->
+</head>
+<body>
+    <div id="wrapper"> <!--wrapper starts-->
+        <nav><!--navigation starts-->
+          <ul>
+            <li><a href="home.html">home.</a></li>
+            <li><a href="books.html">books.</a></li>
+            <li id = "page">my nook.</a></li> <!--make current page's link look different-->
+            <li><a href="about.html">about us.</a></li>
+            <li><a href="contact.html">contact us.</a></li>
+           </ul>
+        </nav><!--navigation ends--> 
+
+        <header> <!--header starts-->
+          <span class="icon-container"> <!--created span so website title and icon could be next to each other-->
+            <img src="blackstarico.PNG" alt="Icon" class="icon" width="20" height="20"> <!--add icon-->
+            <h1>nook.</h1>
+          </span>
+        </header> <!--header ends-->
+
+        <main> <!--main starts-->
+            <h2>my nook.</h2> 
+            <p>
+                Below you will find all of your loans and holds.<br><br>
+                If after borrowing or placing a hold on a book, you wish to purchase it, please fill out the form provided.
+            </p>
+         
+        <div class = "text-container"><!--text-container starts, created so that both divs could be next to each other-->
+            <div class = "text-box"><!--first text-box dev starts-->
+                <form id="books"> <!-- form section -->
+
+                    <fieldset> <!-- book selection -->
+                        <legend>books.</legend>
+                        <p>Please select which books you would like to purchase.</p>
+
+                        <!-- checkboxes with each books title -->
+                        <input type="checkbox" id="book-1" name="book" value="$22.99">
+                        <label>Harry Potter and the Sorcerer's Stone</label><br>
+
+                        <input type="checkbox" id="book-2" name="book" value="$24.99">
+                        <label>Harry Potter and the Order of the Phoenix</label><br>
+
+                        <input type="checkbox" id="book-3" name="book" value="$21.99">
+                        <label>The Fault in Our Stars</label><br>
+
+                        <input type="checkbox" id="book-4" name="book" value="$23.99">
+                        <label>The Poppy War</label><br>
+
+                        <input type="checkbox" id="book-5" name="book" value="$25.99">
+                        <label>The Hunger Games</label><br>
+
+                        <input type="checkbox" id="book-6" name="book" value="$23.99">
+                        <label>On Earth We're Briefly Gorgeous</label><br>
+
+                        <input type="checkbox" id="book-7" name="book" value="$22.99">
+                        <label>Little Fires Everywhere</label><br>
+
+                        <input type="checkbox" id="book-8" name="book" value="$21.99">
+                        <label>The Henna Artist</label><br>
+
+                        <input type="checkbox" id="book-9" name="book" value="$20.99">
+                        <label>Almond</label><br>
+
+                        <input type="checkbox" id="book-10" name="book" value="$19.99">
+                        <label>Before the Coffee Gets Cold </label><br>
+
+                        <input type="checkbox" id="book-11" name="book" value="$24.99">
+                        <label>The Atlas Six</label><br>
+
+                        <input type="checkbox" id="book-12" name="book" value="$20.99">
+                        <label>Night Sky with Exit Wounds</label><br>
+
+                    </fieldset><br> 
+ 
+                    <!-- calculate total price & clear selection buttons -->
+                    <button type="button" class = "oval-btn" onclick="calculateTotal()">Calculate</button> <!-- calculate button --><br><br>
+                    <button type="button" class = "oval-btn" onclick="clearSelection()">Clear</button> <!-- clear checkboxes button --><br>
+                    
+                </form> <!-- end of form-->
+            </div><!--first text-box dev ends-->
+
+            <div class="text-box"><!--second text-box dev starts-->
+                <h3><u>View your total below:</u></b><br><br>
+                    <label id="total"></label></h3> <!-- total fee-->
+            </div><!--second text-box dev ends-->
+
+        </div><br><hr><br> <!--text-container ends-->
+
+        <div class="purchase-btn-container"> <!--separate div for purchase button, so it can be in the middle-->
+            <button type="button" class = "purchase-btn" onclick="checkOut()">Check Out</button> <!-- clear checkboxes button --><br>
+        </div><!-- end of purchase button div-->
+
+        </div><!--wrapper ends-->
+    </main><!--main ends-->
+
+    <!-- javascript -->
+    <script>
+        // obtain an array of the books that were selected by the user
+        // if the array does not exist, initialize it as an empty array 
+        var selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
+
+        // iterate through each checkbox in the array, to find the elements that corresponds to it
+        selectedBooks.forEach(function(bookID) {
+            var bookCheckbox = document.getElementById(bookID); // get bookID
+            if (bookCheckbox) { // if bookID matching bookID in the array is found, select checkbox
+                bookCheckbox.checked = true;
+            }
+        });
+            // clear the stored array to refresh the checkboxes when page is reloaded
+            localStorage.removeItem('selectedBooks');
+
+        // clear selection function
+        function clearSelection(){
+            // clear the selected checkboxes
+            localStorage.removeItem('selectedCheckboxIds');
+
+            // uncheck all checkboxes on the page
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            document.getElementById('total').innerHTML =""; // clear total
+        }
+
+        // calculate total function
+        function calculateTotal() {
+            // create var sub total
+            var subtotal = 0;
+            
+            // add elements from books div to books array
+            var books = document.getElementsByName('book');
+
+            // check if an elements in the array was selected
+            for (var i = 0; i < books.length; i++) {
+                if (books[i].checked) { 
+                    subtotal += parseFloat(books[i].value.match(/\d+/)[0]); // add price to totalPrice
+                }
+            }
+            
+            //get total with taxes
+            var total = (subtotal + ((subtotal * 0.10))).toFixed(2); // add taxes to subtotal
+            
+            // display subtotal & total 
+            document.getElementById('total').innerHTML ="SUBTOTAL<br>------------------------------------<br>$" + subtotal.toFixed(2) + 
+            "<br><br>-----------------------------------------------------<br><br>TOTAL<br>------------------------------------<br>$" + total; //display price
+            
+            return total; // return total price 
+        }
+
+        //check out function
+        function checkOut(){
+            total = calculateTotal(); // get total price
+            alert('You have spent ' + total + '$.'); // show alert to user 
+            clearSelection(); // clear everything
+        }
+
+    </script>
+
+    <footer> <!-- footer -->
+          Copyright &copy; 2024 <i>nook eLibrary</i><br>
+          <a href="mailto:nook@elibrary.com">nook@elibrary.com</a>
+    </footer> <!-- end of footer -->
+
+    </div><!--wrapper ends-->
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!-------------------------------------------------------
+Final Project
+Written by: Raeeba 
+For “Internet Programming” Section 00002– Winter 2024
+-------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> nook. | home.</title>
+    <link rel="icon" href="whitestarico.PNG" type="image/x-icon"> <!-- add icon  -->
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div id="wrapper"> <!--wrapper starts-->
+
+        <nav><!--navigation starts--> 
+            <ul>
+            <li id="page">home.</li> <!--make current page's link look different-->
+            <li><a href="books.html">books.</a></li>
+            <li><a href="profile.html">my nook.</a></li>
+            <li><a href="about.html">about us.</a></li>
+            <li><a href="contact.html">contact us.</a></li>
+            </ul>
+        </nav><!--navigation ends--> 
+    <header><!--header starts-->
+        <span class="icon-container">
+            <img src="blackstarico.PNG" alt="Icon" class="icon" width="20" height="20">
+           <h1>nook.</h1>
+        </span>
+    </header>
+    <main><!--main starts-->
+        <h2> browse all books.</h2>
+        
+        <p> 
+            Welcome to <b>[nook. eLibrary]</b>! Below you will find all of the books we stock. To purchase a book, please select the <b><a href="books.html">[books]</a></b> tab listed above to see our available books.
+            After clicking the purchase button, your books will be recorded in <b><a href="profile.html">[your nook]</a></b> where you can then check out your purchases.
+        </p>
+        
+        <p>
+            Below you will find each book we stock, accompanied by a small summary, and a selected quote from the book.</p>
+        <p>
+            For any questions, you can reach us <b><a href="contact.html">[here]</a></b> or email us at : <a href="mailto:nook@elibrary.com">nook@elibrary.com</a>.
+        </p>
+
+    <div class="container"> <!--container starts, contains all the book info(quote, cover summary)-->
+        <div class="content" id="quote-container"> 
+            <!--quotes will be shown here-->
+        </div> 
+    </div>
+    <br>
+    <div class="image-container" id="image-container">
+        <!--book covers will be shown here-->
+    </div>
+    <br>
+        <div class ="button-container"> <!--button-container contains previous, next and see more buttons-->
+            <button type = "button" class = "direction-btn" onclick="displayPreviousBook()">Previous Book</button>
+            &nbsp;&nbsp;&nbsp;
+            <button type = "button" class = "oval-btn" onclick="seeMore()">See More</button>
+            &nbsp;&nbsp;&nbsp;
+            <button type = "button" class = "direction-btn" onclick="displayNextBook()">Next Book</button>
+        </div>
+        <div class = "summary-container" id = "summary-container"></div>
+        <br>
+        <h2>book recommendations.</h2>
+        <div class = "text-container"> <!--text-container starts, created so that both divs could be next to each other-->
+            <div class = "text-box"> <!--first text-box div starts-->
+                <p> 
+                    <b>[nook. eLibrary]</b> is dedicated to providing reliable access to reading materials to all ages.
+                </p>
+                <p> 
+                    We invite you to browse through our catalogue, and make recommendations for any books you would like to see us provide.
+                </p>
+                <p>
+                    For book suggestions, please reach us through our <b><a href="contact.html">[contact]</a></b> page or email us at : <a href="mailto:nook@elibrary.com">nook@elibrary.com</a>.
+                </p>
+            </div><!--first text-box div ends-->
+            <div class = "image-box"><!--second text-box div starts-->
+                <img src="phone.jpg" class="responsive-image" width="50%" height="auto"> <!--add image to the right-->
+            </div><!--second text-box dev ends-->
+        </div>
+    </div>
+
+    </main> <!--main ends-->
+
+    <!--javascript-->
+    <script>
+        
+        let currentRowIndex = 0; // current Row index is the first row in the csv file
+
+        // diplsya next book function
+        function displayNextBook() {
+            // clear the image container
+            document.getElementById('image-container').innerHTML = '';
+
+            // fetch the records from the csv file 
+            fetch('data.csv')
+                .then(response => response.text())
+                .then(data => {
+                    // split the csv data into rows
+                    const rows = data.split('\n');
+                    totalBooks = rows.length;
+
+                    // make sure currentRowIndex is within bounds
+                    if (currentRowIndex >= rows.length - 1) {
+                        currentRowIndex = 0; // if not, set to the first row
+                    }
+
+                    // split current row into columns
+                    const columns = rows[currentRowIndex].split(';');
+
+                    // build HTML div for displaying current row
+                    let output = '<div>'; // each row will be in a div
+                    let imageOutput = '';
+
+                    // loop through columns
+                    columns.forEach((column, index) => {
+                        if (index === 0) { 
+                            output += `<blockquote><i>"${column}"</i></blockquote>`; // display first column as a quote
+                        } else if (index === 1) { 
+                            output += `<b><i>- ${column},</i></b>`; // display second column as bold and italic text
+                        } else if (index === 2) {
+                            output += `<b> by ${column}.</b>`;
+                        } else if (index === 4){
+                            imageOutput += `${column}`; // display fourth column as an image
+                        }
+                    });
+
+                    output += '</div>'; // end div
+
+                    // Display data
+                    document.getElementById('quote-container').innerHTML = output; // display output to website
+
+                    // get image name from 4th column 
+                    const imageURL = columns[3].trim(); 
+
+                    // create an img element with image name
+                    const img = document.createElement('img');
+                    img.src = imageURL;
+
+                    // append the image element to the image container
+                    document.getElementById('image-container').appendChild(img);
+                    document.getElementById('summary-container').innerHTML = imageOutput;
+
+                    // increment currentRowIndex for next click 
+                    currentRowIndex++;
+                })
+                .catch(error => console.error('Error fetching data:', error)); // catch any errors
+        }
+
+        // display previous book function 
+        function displayPreviousBook() {
+            // decrement currentRowIndex to go back (to compensate for the currentRowIndex increase, decrement by 2)
+            currentRowIndex -= 2; 
+
+            // ensure currentRowIndex stays within bounds
+            if (currentRowIndex < 0) {
+                currentRowIndex = 11; // if not, set to the last row
+            }
+
+            // call displayNextBook to display the previous book using new currentRowIndex
+            displayNextBook();
+        }
+
+        // display next book when page loads
+        window.onload = displayNextBook;
+
+        //see more function
+        function seeMore(){
+            // Redirect to the new page
+            window.location.href = 'books.html'; //redirectes to books.html page so user can purchase books
+        }
+
+    </script>
+    <footer> <!-- footer -->
+        Copyright &copy; 2024 <i>nook eLibrary</i><br>
+        <a href="mailto:nook@elibrary.com">nook@elibrary.com</a>
+    </footer> <!-- end of footer -->
+
+    </div>
+</body>
+</html>
+

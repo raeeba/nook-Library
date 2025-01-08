@@ -1,0 +1,156 @@
+<!-------------------------------------------------------
+Final Project
+Written by: Raeeba 
+For “Internet Programming” Section 00002– Winter 2024
+-------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nook. | books.</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="whitestarico.PNG" type="image/x-icon"> <!-- add icon  -->
+</head>
+<body>
+    <div id="wrapper"><!--wrapper starts-->
+      <div class="table-wrapper">
+            <nav><!--navigation starts--> 
+            <ul>
+              <li><a href="home.html">home.</a></li>
+              <li id = "page">books.</a></li><!--make current page's link look different-->
+              <li><a href="profile.html">my nook.</a></li>
+              <li><a href="about.html">about us.</a></li>
+              <li><a href="contact.html">contact us.</a></li>
+            </ul>
+            </nav> <!--navigation ends-->  
+
+      <header>
+          <span class="icon-container">
+            <img src="blackstarico.PNG" alt="Icon" class="icon" width="20" height="20">
+            <h1>nook.</h1>
+          </span>
+       </header>
+
+      <main><!--main starts--> 
+          <h2> purchase books.</h2>
+           <p>
+            Below you will find all of our available books.<br><br>
+            Upon clicking the purchase button, the book will be selected in <b><a href="profile.html">[your nook]</a></b> where you can view it.
+          </p> <br>
+           <table id = "bookTable"> <!--all books are stored in a table, in one row--> 
+            <tr>
+            <td>
+                <img src="image1.jpg" class="responsive-image" width="80%" height="auto"> 
+                <br> <br>
+                <em><b>HP and the Sorcerer's Stone</b></em><br> by J.K. Rowling
+                <br><br><b>22.<sup>99$</sup></b><br><br>
+                  <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-1')">Purchase</button>
+            </td>
+            <td>
+              <img src="image2.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>HP and the Order of the Phoenix</b></em><br> by J.K. Rowling
+              <br><br><b>24.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-2')">Purchase</button>
+            </td>
+            <td>
+              <img src="image3.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>The Fault in Our Stars</b></em><br> by John Green
+              <br><br><b>21.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-3')">Purchase</button>
+            </td>
+            <td>
+              <img src="image4.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>The Poppy War</b></em><br> by R.F. Kuang
+              <br><br><b>23.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-4')">Purchase</button>
+            </td>
+            <td>
+              <img src="image5.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>The Hunger Games</b></em><br> by Suzanne Collins
+              <br><br><b>25.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-5')">Purchase</button>
+            </td>
+            <td>
+              <img src="image6.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>On Earth We're Briefly Gorgeous</b></em><br> by Ocean Vuong
+              <br><br><b>23.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-6')">Purchase</button>
+            </td>
+            <td>
+              <img src="image7.jpg" class="responsive-image"width="80%" height="auto"> 
+              <br> <br>
+              <em><b>Little Fires Everywhere</b></em><br> by Celeste Ng
+              <br><br><b>22.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-7')">Purchase</button>
+            </td>
+            <td>
+              <img src="image8.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>The Henna Artist</b></em><br> by Alka Joshi
+              <br><br><b>21.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-8')">Purchase</button>
+            </td>
+            <td>
+              <img src="image9.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>Almond</b></em><br> by Won-pyung Sohn
+              <br><br><b>20.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-9')">Purchase</button>
+            </td>
+            <td>
+              <img src="image10.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>Before the Coffee Gets Cold</b></em><br> by Toshikazu Kawaguchi
+              <br><br><b>19.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-10')">Purchase</button>
+            </td>
+            <td>
+              <img src="image11.jpg" class="responsive-image" width="80%" height="auto">
+              <br> <br>
+              <em><b>The Atlas Six</b></em><br> by Olivie Blake
+              <br><br><b>24.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-11')">Purchase</button>
+            </td>
+            <td>
+              <img src="image12.jpg" class="responsive-image" width="80%" height="auto"> 
+              <br> <br>
+              <em><b>Night Sky with Exit Wounds</b></em><br> by Ocean Vuong
+              <br><br><b>20.<sup>99$</sup></b><br><br>
+                <button type = "button" id = "books" class = "oval-btn" onclick="purchase('book-12')">Purchase</button>
+            </td>
+          </tr>          
+        </table>
+      </div>
+      </main><!--main ends--> 
+
+      <!--javascript--> 
+      <script>
+        // purchase book function
+        function purchase(book){
+        // obtain an array of the books that were selected by the user
+        // if the array does not exist, initialize it as an empty array 
+          var selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
+
+          // add the new bookID to the array
+          selectedBooks.push(book);
+
+          // store the updated array in localStorage
+          localStorage.setItem('selectedBooks', JSON.stringify(selectedBooks));
+        }
+
+      </script>
+
+      <footer> <!-- footer -->
+          Copyright &copy; 2024 <i>nook eLibrary</i><br>
+          <a href="mailto:nook@elibrary.com">nook@elibrary.com</a>
+      </footer> <!-- end of footer -->
+
+    </div><!--wrapper ends-->
+</body>
+</html>

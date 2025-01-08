@@ -1,0 +1,60 @@
+<!-------------------------------------------------------
+Final Project
+Written by: Raeeba
+For “Internet Programming” Section 00002– Winter 2024
+-------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> nook. | contact us.</title>
+    <link rel="icon" href="whitestarico.PNG" type="image/x-icon"> <!-- add icon  -->
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div id="wrapper"><!--wrapper starts-->
+
+        <nav><!--navigation starts--> 
+        <ul>
+          <li><a href="home.html">home.</a></li>
+          <li><a href="books.html">books.</a></li>
+          <li><a href="profile.html">my nook.</a></li>
+          <li><a href="about.html">about us.</a></li>
+          <li id="page">contact.</li><!--make current page's link look different-->
+        </ul>
+        </nav><!--navigation ends-->   
+
+    <header> 
+        <span class="icon-container">
+            <img src="blackstarico.PNG" alt="Icon" class="icon" width="20" height="20">
+           <h1>nook.</h1>
+        </span>
+    </header>
+
+    <main>
+        <div class="form-box"> <!-- contact us form-->
+            <h3> <u>contact us form.</u> </h3>
+            <p> 
+                For any inquiries, please contact us by filling out the form below.
+            </p>
+            <form id= "contact" class ="contact-group">
+                <input type="text" class="input-field" placeholder= "enter name." required>
+                <input type = "email" class="input-field" placeholder= "enter email address." required>
+                <input type = "password" class="input-field" placeholder= "enter password." required>
+                <br> <br>
+                <textarea id="message" name="message" rows="4" placeholder= "type message." required></textarea>
+                <br> <br> <hr> <br>
+                <button type = "submit" class="submit-btn"> Send </button>
+            </form>
+    </main>
+
+    <footer> <!-- footer -->
+        Copyright &copy; 2024 <i>nook eLibrary</i><br>
+        <a href="mailto:nook@elibrary.com">nook@elibrary.com</a>
+    </footer> <!-- end of footer -->
+    
+    </div><!--wrapper ends-->
+</body>
+</html>
+
